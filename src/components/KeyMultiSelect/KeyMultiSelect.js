@@ -5,7 +5,8 @@ import { camelCaseToReadable } from "../Table/Table";
 export const getKeysFromFirstObject = (data) => {
   if (data.length === 0) return [];
   return Object.keys(data[0]).filter(
-    (key) => key !== "name" && key !== "country" && key !== "id"
+    (key) =>
+      key !== "name" && key !== "country" && key !== "id" && key !== "city"
   );
 };
 
