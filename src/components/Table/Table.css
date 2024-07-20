@@ -1,0 +1,39 @@
+/* src/Table.css */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table-container {
+    max-width: 700px;
+    margin: auto;
+}
+
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    font-weight: 700;
+    border-bottom: 3px solid rgb(222, 226, 230); 
+}
+
+td:first-child, th:first-child {
+    font-weight: bold;
+}
+
+td {
+    border-bottom: 1px solid rgb(222, 226, 230); 
+}
+
+.table img {
+    margin-right: 5px;
+}
+
+.spinner {
+    margin-top: 20px;
+}
+
