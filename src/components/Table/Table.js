@@ -30,30 +30,33 @@ const Table = ({
             </tr>
           </thead>
           <tbody>
-            {results.length ? (
-              results.map((item, index) => (
-                <tr key={item.id}>
-                  <td>{(page - 1) * limit + index + 1}</td>
-                  <td>{item.name}</td>
-                  <td>
-                    <img
-                      src={`https://flagsapi.com/${item.countryCode}/flat/16.png`}
-                      alt={item.country}
-                    />
-                    {item.country}
-                  </td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan="3">
-                  {totalCount ? "No result found" : "Start searching"}
-                </td>
-              </tr>
-            )}
+            {results.length
+              ? results.map((item, index) => (
+                  <tr key={item.id}>
+                    <td>{(page - 1) * limit + index + 1}</td>
+                    <td>{item.name}</td>
+                    <td>
+                      <img
+                        src={`https://flagsapi.com/${item.countryCode}/flat/16.png`}
+                        alt={item.country}
+                      />
+                      {item.country}
+                    </td>
+                  </tr>
+                ))
+              : null}
           </tbody>
         </table>
       )}
+      {
+        <div className="search-message">
+          {!results.length
+            ? totalCount
+              ? "No result found"
+              : "Start searching"
+            : null}
+        </div>
+      }
       {totalCount > 0 && (
         <Pagination
           onLimitChange={onLimitChange}
