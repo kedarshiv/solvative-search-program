@@ -1,6 +1,14 @@
 import React from "react";
 import "./Table.css";
 import Pagination from "../Pagination/Pagination";
+
+export function camelCaseToReadable(camelCaseStr) {
+  // Add a space before each uppercase letter
+  const result = camelCaseStr.replace(/([a-z])([A-Z])/g, "$1 $2");
+  // Capitalize the first letter of the resulting string
+  return result.charAt(0).toUpperCase() + result.slice(1);
+}
+
 const Table = ({
   results,
   loading,
@@ -9,6 +17,7 @@ const Table = ({
   setPage,
   limit,
   onLimitChange,
+  selectedKeys,
 }) => {
   const handlePageChange = (pageIndex) => {
     setPage(pageIndex);
@@ -27,6 +36,9 @@ const Table = ({
               <th>#</th>
               <th>Place Name</th>
               <th>Country</th>
+              {selectedKeys.map((key) => {
+                return <th>{camelCaseToReadable(key)}</th>;
+              })}
             </tr>
           </thead>
           <tbody>
@@ -42,6 +54,9 @@ const Table = ({
                       />
                       {item.country}
                     </td>
+                    {selectedKeys.map((key) => {
+                      return <td>{item[key]}</td>;
+                    })}
                   </tr>
                 ))
               : null}
